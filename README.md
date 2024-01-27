@@ -9,19 +9,14 @@ java -jar application.jar -Djdk.httpclient.HttpClient.log=requests,errors,header
 ## Examples
 
 ```java
-
 @Service
-public class PostService {
+public class PostClient {
 
     private final RestClient restClient;
 
-    public PostService(RestClient.Builder builder) {
-        var requestFactory = new JdkClientHttpRequestFactory();
-        requestFactory.setReadTimeout(10_000);
-
+    public PostClient(RestClient.Builder builder) {
         this.restClient = builder
                 .baseUrl("https://jsonplaceholder.typicode.com")
-                .requestFactory(requestFactory)
                 .build();
     }
 
